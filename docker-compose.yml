@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./server
+    ports:
+      - '5001:5001'
+    environment:
+      PORT: 5001
+      MONGO_URI: mongodb+srv://TaskManagement:wbtMxcIMdBEkp6va@cluster0.x17d5ki.mongodb.net/worknest?retryWrites=true&w=majority&tls=true
+      JWT_SECRET: worknest_super_secret_jwt_key
+      CLIENT_URL: http://localhost
+
+  frontend:
+    build: ./client
+    ports:
+      - '80:80'
+    depends_on:
+      - backend
