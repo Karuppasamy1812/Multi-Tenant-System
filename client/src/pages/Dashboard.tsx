@@ -173,13 +173,13 @@ export default function Dashboard() {
                 </p>
                 <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-50">
                   <div className="flex -space-x-1.5">
-                    {members.slice(0, 4).map((m, i) => (
+                    {members?.slice(0, 4).map((m, i) => (
                       <div
-                        key={m._id}
-                        title={m.name}
+                        key={m?._id}
+                        title={m?.name}
                         className={`w-6 h-6 rounded-full ${avatarColors[i % avatarColors.length]} text-white text-[10px] flex items-center justify-center border-2 border-white font-semibold`}
                       >
-                        {m.name[0].toUpperCase()}
+                        {m?.name[0].toUpperCase()}
                       </div>
                     ))}
                   </div>

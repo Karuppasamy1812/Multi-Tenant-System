@@ -49,7 +49,7 @@ export default function ProjectDetail() {
 
   const existingMemberIds = useMemo(() => {
     if (!project) return new Set<string>();
-    return new Set([project.owner._id, ...project.members.map(m => m.user._id)]);
+    return new Set([project?.owner?._id, ...project?.members?.map(m => m?.user?._id)]);
   }, [project]);
 
   const availableMembers = allMembers?.filter(m => !existingMemberIds.has(m._id)) ?? [];
@@ -78,9 +78,9 @@ export default function ProjectDetail() {
         <div className="flex items-center gap-3">
           <div className="flex -space-x-2">
             {projectMembers.slice(0, 5).map((m, i) => (
-              <div key={m._id} title={m.name}
+              <div key={m?._id} title={m?.name}
                 className={`w-8 h-8 rounded-full ${avatarColors[i % avatarColors.length]} text-white text-xs flex items-center justify-center border-2 border-white font-bold`}>
-                {m.name[0].toUpperCase()}
+                {m?.name[0]?.toUpperCase()}
               </div>
             ))}
           </div>
